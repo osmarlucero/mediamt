@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-	<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Examen</title>
+	<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <title>Examen</title>
+    </head>
 </head>
-<body style="margin: 0; overflow: hidden;">
-	<script type="text/javascript">
-		AFRAME.registerComponent('locationfinder',{
-			init : function(){
-				navigator.geolocation.getCurrentPosition(function(location){
-					console.log(location);
-				});
-			}
-		});
-		
-	</script>
-	<a-scene embedded arjs="source:webcam;">
-		<a-camera locationfinder gps-camera="simulateLatitude:24.106414;simulateLongitude:-110.317054" rotation-reader>
-		</a-camera>
-			<a-text value="house" scale="5 5 5" look-at="[gps-camera]" align="center"
-				gps-entity-place="latitude:24.106360;longitude:-110.316973;">
-			</a-text>
-			<a-text value="casa" scale="5 5 5" look-at="[gps-camera]" align="center"
-				gps-entity-place="latitude:24.106424;longitude:-110.317091;">
-			</a-text>
-	</a-scene>
-</body>
+ <body style="margin: 0; overflow: hidden;">
+        <a-scene
+            embedded
+            loading-screen="enabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: false;"
+        >
+                <a-image
+                    src="horario.gltf"
+                    look-at="[gps-camera]"
+                    scale="1 1 1"
+                    gps-entity-place="latitude: 24.106529; longitude: -110.317032;"
+                ></a-image>
+                <a-image
+                    src="horario.gltf"
+                    look-at="[gps-camera]"
+                    scale="1 1 1"
+                    gps-entity-place="latitude: 24.1063666972466; longitude: -110.31721243634821;"
+                ></a-image>
+
+            <a-camera gps-camera rotation-reader></a-camera>
+        </a-scene>
+    </body>
 </html>
